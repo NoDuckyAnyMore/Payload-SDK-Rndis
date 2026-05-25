@@ -1,0 +1,21 @@
+build/
+
+# Runtime logs and local debug output
+*.log
+*_Debug.txt
+
+# Large sample model kept local only
+samples/sample_c++/module_sample/liveview/data/tensorflow/frozen_inference_graph.pb
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# CMake generated files when built in-tree
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json

@@ -1,0 +1,39 @@
+请务必按照文档要求的版本源码编译安装ppmpeg和opencv以及其他库
+ppmpeg的小版本可以不一样
+
+
+cd Payload-SDK/
+mkdir build && cd build
+cmake ../  && make -j4
+./bin/dji_sdk_demo_on_manifold3 ?? 自己改
+
+./bin/dji_sdk_demo_ubuntu24_cxx   %这个是minipc的
+./bin/dji_sdk_demo_on_rpi_cxx   %这个是树莓派的哦
+
+装opencv的时候，不要把一些警告当做报错中断哈
+
+%%%%%%%%%%%%%重要！！！！%%%%%%%%%%%%%%%%%%
+cmake文件夹
+OpenCVCompilerOptions.cmake
+124行注释掉
+%%%%%%%%%%%%%重要！！！%%%%%%%%%%%%%%%%%%
+
+
+正好默认的妙算2就是x86平台！
+在manifold2文件夹里的CmakeLists里面修改具体的config细节: 工具链、项目名、路径
+主文件夹内选择编译的平台种类: manifold2 3 jetson resp ..
+
+需要修改的内容，c和cxx的都要改
+1. dji_sdk_app_info, 填写开发者信息
+2. hal文件夹下的uart文件，修改串口的端口号
+3. 可以在dji_sdk_config文件修改需要编译的模块和与eport的连接种类，目前默认
+连接种类ONLY_UART即可，不需要配置USB-BULK.
+
+
+怎么用！
+RNDIS模式下关闭要这样
+sudo pkill -TERM -f dji_sdk_demo_on_rpi_cxx
+sleep 5
+
+使用term信号，并等待一段时间，否则百分百卡死，要重启
+
