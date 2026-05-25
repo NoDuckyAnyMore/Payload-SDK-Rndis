@@ -1,5 +1,17 @@
 # DJI Payload SDK (PSDK)
 
+## About This Fork
+
+This repository is based on DJI Payload SDK 3.13.1, with changes for running and compiling the Linux sample directly on
+Raspberry Pi 4B. The default Linux build entry has been switched to the Raspberry Pi platform samples, and the Raspberry
+Pi configuration is prepared for a USB network/RNDIS-style connection to the aircraft instead of the original Manifold
+target setup.
+
+The flight-controller subscription sample in `samples/sample_c/module_sample/fc_subscription` has also been extended for
+data logging. In addition to the original quaternion, velocity and GPS examples, it subscribes to and records extra
+flight data including fused position, RTK position, visual odometry position and flight status. The sample writes
+timestamped debug data files on the Raspberry Pi, making it easier to collect flight-controller telemetry during tests.
+
 ![](https://img.shields.io/badge/version-V3.13.1-purple.svg)
 ![](https://img.shields.io/badge/platform-linux_|_rtos-red.svg)
 ![](https://img.shields.io/badge/license-MIT-cyan.svg)
