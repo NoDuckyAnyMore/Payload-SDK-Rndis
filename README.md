@@ -1,11 +1,18 @@
 # DJI Payload SDK (PSDK)
 
+![M400 4G radio mapping payload](m400_4GRM.png)
+
 ## About This Fork
 
 This repository is based on DJI Payload SDK 3.13.1, with changes for running and compiling the Linux sample directly on
 Raspberry Pi 4B. The default Linux build entry has been switched to the Raspberry Pi platform samples, and the Raspberry
 Pi configuration is prepared for a USB network/RNDIS-style connection to the aircraft instead of the original Manifold
 target setup.
+
+This fork is used for an M400 payload experiment that mounts a Raspberry Pi 4B, SDR hardware and a 4G/5G dongle on the
+aircraft to collect cellular base-station and radio-signal measurements during flight. The onboard Raspberry Pi reads
+flight-controller telemetry through DJI PSDK and combines it with radio measurements so the collected data can be used to
+build RSSI/RSRP 3D radio maps, satellite-map overlays and DEM-based visualization after the flight.
 
 The flight-controller subscription sample in `samples/sample_c/module_sample/fc_subscription` has also been extended for
 data logging. In addition to the original quaternion, velocity and GPS examples, it subscribes to and records extra
